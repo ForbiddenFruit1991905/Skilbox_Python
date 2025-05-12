@@ -63,22 +63,27 @@
 # Нужно зайти в магазин.
 
 # Вариант 1:
-# work_time = 8
-# count_time = 0
-# summ_tasks = 0
-# flag = True
-# print("Начался восьмичасовой рабочий день.")
-# while count_time != work_time and flag:
-#     count_time += 1
-#     print(f"{count_time}-й час")
-#     tasks = int(input("Сколько задач решит Максим? "))
-#     summ_tasks += tasks
-#     wife_call = int(input("Звонит жена. Взять трубку? (1 — да, 0 — нет): "))
-#     if wife_call == 1:
-#         flag = False
-#         print("Нужно зайти в магазин")
-#
-# print("Рабочий день закончился. Всего выполнено задач:", summ_tasks)
+work_time = 8
+count_time = 0
+summ_tasks = 0
+flag = True
+w_c_count = 0
+
+print("Начался восьмичасовой рабочий день.")
+while count_time != work_time and flag:
+    count_time += 1
+    print(f"{count_time}-й час")
+    tasks = int(input("Сколько задач решит Максим? "))
+    summ_tasks += tasks
+
+    wife_call = int(input("Звонит жена. Взять трубку? (1 — да, 0 — нет): "))
+    w_c_count += wife_call
+    if w_c_count == 1 and count_time == work_time:
+        flag = False
+
+print("Рабочий день закончился. Всего выполнено задач:", summ_tasks)
+if w_c_count >= 1:
+    print("Нужно зайти в магазин")
 
 # Вариант 2:
 work_time = 8
@@ -86,43 +91,23 @@ count_time = 0
 summ_tasks = 0
 flag = True
 w_c_count = 0
+wife_called = False
 print("Начался восьмичасовой рабочий день.")
 while count_time != work_time and flag:
     count_time += 1
     print(f"{count_time}-й час")
     tasks = int(input("Сколько задач решит Максим? "))
     summ_tasks += tasks
-    while w_c_count != 1:
+
+    if not wife_called:
         wife_call = int(input("Звонит жена. Взять трубку? (1 — да, 0 — нет): "))
         w_c_count += wife_call
-        if wife_call == 1 and count_time == work_time:
-            flag = False
-        else:
-            continue
+        if wife_call == 1:
+            wife_called = True
+
+    if w_c_count == 1 and count_time == work_time:
+        flag = False
 
 print("Рабочий день закончился. Всего выполнено задач:", summ_tasks)
 if w_c_count == 1:
     print("Нужно зайти в магазин")
-
-# Рабочий вариант_1
-# work_time = 8
-# count_time = 0
-# summ_tasks = 0
-# flag = True
-# w_c_count = 0
-#
-# print("Начался восьмичасовой рабочий день.")
-# while count_time != work_time and flag:
-#     count_time += 1
-#     print(f"{count_time}-й час")
-#     tasks = int(input("Сколько задач решит Максим? "))
-#     summ_tasks += tasks
-#
-#     wife_call = int(input("Звонит жена. Взять трубку? (1 — да, 0 — нет): "))
-#     w_c_count += wife_call
-#     if w_c_count == 1 and count_time == work_time:
-#         flag = False
-#
-# print("Рабочий день закончился. Всего выполнено задач:", summ_tasks)
-# if w_c_count >= 1:
-#     print("Нужно зайти в магазин")
