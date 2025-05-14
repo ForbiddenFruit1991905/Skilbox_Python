@@ -19,18 +19,51 @@
 # Результат вывода соответствует условию.
 # В выводе присутствует сообщение о том, кого больше.
 # Для решения используется цикл for, а не встроенные функции или рекурсия.
-# TODO не решена
-students = int(input("Сколько в классе учеников? "))
-count_students = 0
-count_scale = 0
-max_count = 0
-for student in range(students):
-    scale = int(input("Введите оценку ученика: "))
-    if scale == 3 or scale == 4 or scale == 5:
-        count_students += 1
-        count_scale *= count_students
-        print(count_scale)
 
-    if count_students > max_count:
-        max_count = count_students
-print(max_count)
+students = int(input("Сколько в классе учеников? "))
+count_3 = 0
+count_4 = 0
+count_5 = 0
+
+for count_students in range(students):
+    scale = int(input("Введите оценку ученика: "))
+    if scale == 3:
+        count_3 += 1
+    elif scale == 4:
+        count_4 += 1
+    elif scale == 5:
+        count_5 += 1
+
+if count_3 > count_4 and count_3 > count_5:
+    print("Сегодня больше троечников!")
+elif count_4 > count_3 and count_4 > count_5:
+    print("Сегодня больше хорошистов!")
+elif count_3 == count_4 and count_3 > count_5:
+    print("Сегодня больше хорошистов и троечников!")
+elif count_4 == count_5 and count_4 > count_3:
+    print("Сегодня больше хорошистов и отличников!")
+elif count_3 == count_5 and count_3 > count_4:
+    print("Сегодня больше троечников и отличников!")
+else:
+    print("Сегодня больше отличников!")
+
+
+# Второй вариант - не корректно работает
+
+# students = int(input("Сколько в классе учеников? "))
+# count_students = 0
+# max_count = 0
+#
+# while count_students != students:
+#     scale = int(input("Введите оценку ученика: "))
+#     count_students += 1
+#     count_scale = 0  # сбрасываем счетчик перед подсчетом оценок ученика
+#
+#     for num in range(3, 6):
+#         if num == scale:
+#             count_scale += 1
+#             print(num, "- в количестве", count_scale)
+#             if count_scale > max_count:
+#                 max_count = count_scale
+#
+# print("Максимальное количество оценок:", max_count)
