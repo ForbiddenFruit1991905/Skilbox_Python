@@ -43,16 +43,29 @@
 l_limit = int(input("Введите нижнюю границу: "))
 h_limit = int(input("Введите верхнюю границу: "))
 step = int(input("Введите шаг: "))
-if l_limit > h_limit and step > 0:
-    for x in range(l_limit, h_limit - 1, step * (-1)):
-        y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
-        print(f"В точке {x} функция равна {y}")
-elif l_limit < h_limit and step < 0:
+
+if l_limit > h_limit:
     l_limit, h_limit = h_limit, l_limit
-    for x in range(l_limit, h_limit - 1, -abs(step)):
-        y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
-        print(f"В точке {x} функция равна {y}")
-else:
-    for x in range(l_limit, h_limit + 1, step):
-        y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
-        print(f"В точке {x} функция равна {y}")
+if step > 0:
+    step = -step
+for x in range(h_limit, l_limit - 1, step):
+    y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
+    print(f"В точке {x} функция равна {y}")
+
+
+# l_limit = int(input("Введите нижнюю границу: "))
+# h_limit = int(input("Введите верхнюю границу: "))
+# step = int(input("Введите шаг: "))
+# if l_limit > h_limit and step > 0:
+#     for x in range(l_limit, h_limit - 1, step * (-1)):
+#         y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
+#         print(f"В точке {x} функция равна {y}")
+# elif l_limit < h_limit and step < 0:
+#     l_limit, h_limit = h_limit, l_limit
+#     for x in range(l_limit, h_limit - 1, -abs(step)):
+#         y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
+#         print(f"В точке {x} функция равна {y}")
+# else:
+#     for x in range(l_limit, h_limit + 1, step):
+#         y = x ** 3 + 2 * (x ** 2) - 4 * x + 1
+#         print(f"В точке {x} функция равна {y}")
