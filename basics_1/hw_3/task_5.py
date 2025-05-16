@@ -34,8 +34,8 @@ count_exp = expenses
 money_needed = 0
 
 for month in range(1, months + 1):
-    a = count_exp - bursary
-    print(f"{month}-й месяц: траты {count_exp} рублей, не хватает {a} рублей.")
+    missing_amount = count_exp - bursary
+    print(f"{month}-й месяц: траты {count_exp} рублей, не хватает {missing_amount} рублей.")
     count_exp += count_exp * 3 // 100
-    money_needed += a
+    money_needed += missing_amount
 print("Сумма денег, которую необходимо получить у родителей:", money_needed)

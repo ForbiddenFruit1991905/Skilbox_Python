@@ -21,10 +21,8 @@
 # Результат вывода соответствует условию.
 # Для решения использован цикл for и range c шагом.
 
-months = 25
-count = 0
-while count < months:
-    for bag in range(96, -1, -4):
-        count += 1
-        print(f"Через {count} месяц: {bag} кг гречки в запасе")
+month = 0
+for bag in range(96, -1, -4):
+    month += 1
+    print(f"Через {month} месяц: {bag} кг гречки в запасе")
 print("Запасы гречки закончились.")
