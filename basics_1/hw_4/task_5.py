@@ -9,3 +9,21 @@
 # Введите число: 98
 # Введите число: 453
 # Число 98 имеет максимальную сумму цифр: 17
+
+nums = int(input("Введите количество чисел: "))
+max_summ = 0
+max_num = 0
+
+for _ in range(nums):
+    user_num = int(input("Введите число: "))
+
+    summ = 0
+    num = user_num
+    while user_num:
+        summ += user_num % 10
+        user_num //= 10
+    print(f"Сумма цифр числа {num} будет равна {summ}")
+    if max_summ < summ:
+        max_summ = summ
+        max_num = num
+print(f"Число {max_num} имеет максимальную сумму цифр: {max_summ}")
