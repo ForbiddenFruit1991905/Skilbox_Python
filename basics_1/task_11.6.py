@@ -28,6 +28,3 @@ for _ in range(nums):
     if num < 0:
         print(f"Число отрицательное, округленное до числа: {math.floor(num)}, "
               f"вычисляем экспоненту в степени числа: {math.exp(math.floor(num))}")
-
-
-
