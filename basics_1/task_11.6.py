@@ -29,27 +29,25 @@
 #         print(f"Число отрицательное, округленное до числа: {math.floor(num)}, "
 #               f"вычисляем экспоненту в степени числа: {math.exp(math.floor(num))}")
 
-# download_size = 123
+# import math
+#
+# download_size = 1230
 # download_speed = 27
+# size_range = math.ceil(download_size / download_speed)
 # procent = 0
-# # {procent}
-# for sec in range(1, (download_size // download_speed) + 2):
-#     # procent += 100 / (download_size // download_speed)
-#     print(f"Прошло {sec} сек. Скачано {download_speed} из {download_size} -  %")
-#     download_speed += 27
+# if download_size < 0 or download_speed < 0:
+#     print("Размер обновления и скорость соединения не могут быть меньше нуля.")
+# else:
+#     for sec in range(1, size_range + 1):
+#         procent = math.ceil(100 * (download_speed / download_size))
+#         print(f"Прошло {sec} сек.Скачано {download_speed} из {download_size} - {procent} %")
+#         download_speed += 27
+#         if download_speed > download_size:
+#             download_speed = download_size
 
-import math
+x = 123.456
+x_round = round(x, 2) % 1
 
-download_size = 1230
-download_speed = 27
-size_range = math.ceil(download_size / download_speed)
-procent = 0
-if download_size < 0 or download_speed < 0:
-    print("Размер обновления и скорость соединения не могут быть меньше нуля.")
-else:
-    for sec in range(1, size_range + 1):
-        procent = math.ceil(100 * (download_speed / download_size))
-        print(f"Прошло {sec} сек.Скачано {download_speed} из {download_size} - {procent} %")
-        download_speed += 27
-        if download_speed > download_size:
-            download_speed = download_size
+print(f"Первая цифра после десятичной точки: {int(x_round * 10)}")
+# или так:
+print(f"Первая цифра после десятичной точки: {int(x * 10) % 10}")
