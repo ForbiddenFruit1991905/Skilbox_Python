@@ -24,15 +24,35 @@ import math
 download_size = int(input("Укажите размер файла для скачивания: "))
 download_speed = int(input("Какова скорость вашего соединения: "))
 size_range = math.ceil(download_size / download_speed)
-procent = 0
+percent = 0
+downloaded = 0
+
 if download_size < 0 or download_speed < 0:
     print("Размер обновления и скорость соединения не могут быть меньше нуля.")
 elif download_size < download_speed:
     print(f"Прошло 1 сек. Скачано {download_size} из {download_size} Мб (100%)")
 else:
-    for sec in range(1, size_range + 1):
-        procent = math.ceil(100 * (download_speed / download_size))
-        print(f"Прошло {sec} сек. Скачано {download_speed} из {download_size} - {procent} %")
-        download_speed += 27
-        if download_speed > download_size:
-            download_speed = download_size
+    while downloaded < download_size:
+        for sec in range(1, size_range + 1):
+            downloaded += download_speed
+            percent = math.ceil(100 * (downloaded / download_size))
+            if downloaded > download_size:
+                downloaded = download_size
+                percent = 100
+            print(f"Прошло {sec} сек. Скачано {downloaded} из {download_size} - {percent} %")
+
+# download_size = int(input("Укажите размер файла для скачивания: "))
+# download_speed = int(input("Какова скорость вашего соединения: "))
+# size_range = math.ceil(download_size / download_speed)
+# procent = 0
+# if download_size < 0 or download_speed < 0:
+#     print("Размер обновления и скорость соединения не могут быть меньше нуля.")
+# elif download_size < download_speed:
+#     print(f"Прошло 1 сек. Скачано {download_size} из {download_size} Мб (100%)")
+# else:
+#     for sec in range(1, size_range + 1):
+#         procent = math.ceil(100 * (download_speed / download_size))
+#         print(f"Прошло {sec} сек. Скачано {download_speed} из {download_size} - {procent} %")
+#         download_speed += 27
+#         if download_speed > download_size:
+#             download_speed = download_size
