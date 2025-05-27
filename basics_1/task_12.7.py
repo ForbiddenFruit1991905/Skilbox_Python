@@ -51,3 +51,17 @@ def find_max_delimiter(first_num, second_num):
 first_number = int(input("Введите первое число: "))
 second_number = int(input("Введите второе число: "))
 find_max_delimiter(first_number, second_number)
+
+# Вариант решения от скиллбокс:
+# import math
+#
+# def gcd(a, b):
+#     while a != 0 and b != 0:
+#         if a > b:
+#             a = a % b
+#         else:
+#             b = b % a
+#     print("Наибольший общий делитель:", a + b)#
+#
+# gcd(30, 20)
+# print(math.gcd(30, 20))
