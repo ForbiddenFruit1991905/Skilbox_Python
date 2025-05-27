@@ -60,21 +60,17 @@ def find_min(number):
 
 def calc(number):
     choice = int(input("Введите номер действия:\n1 - сумма цифр\n2 - максимальная цифра\n3 - минимальная цифра\n"))
-    while choice:
-        if choice == 1:
-            print(f'Сумма цифр числа {number} равна', end=' ')
-            summ(number)
-            break
-        elif choice == 2:
-            print(f'Максимальная цифра числа {number} равна', end=' ')
-            find_max(number)
-            break
-        elif choice == 3:
-            print(f'Минимальная цифра числа {number} равна', end=' ')
-            find_min(number)
-            break
-        else:
-            print('Неправильный выбор действия.')
+    if choice == 1:
+        print(f'Сумма цифр числа {number} равна', end=' ')
+        summ(number)
+    elif choice == 2:
+        print(f'Максимальная цифра числа {number} равна', end=' ')
+        find_max(number)
+    elif choice == 3:
+        print(f'Минимальная цифра числа {number} равна', end=' ')
+        find_min(number)
+    else:
+        print('Неправильный выбор действия.')
 
 main_num = int(input("Введите число: "))
 calc(main_num)
