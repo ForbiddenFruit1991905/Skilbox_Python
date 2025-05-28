@@ -19,7 +19,7 @@ def count_swings(begin, end):
     count = 0
     memory_begin = begin
     while memory_begin >= end:
-        memory_begin *= 0.84
+        memory_begin *= 0.916
         count += 1
     return count
 
@@ -27,3 +27,6 @@ start = float(input("Введите начальную амплитуду: "))
 stop = float(input("Введите амплитуду остановки: "))
 res = count_swings(start, stop)
 print(f"Маятник считается остановившимся через {res} колебаний")
+
+# procent = 1.0 - 0.084 # = 0.916
+# print(procent)
