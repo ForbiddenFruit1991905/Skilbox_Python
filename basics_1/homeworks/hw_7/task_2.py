@@ -18,11 +18,14 @@
 # Самое большое число: 23
 
 def maximum_of_two(num_1, num_2):
-    max_num = num_1
-    if max_num < num_2:
-        max_num = num_2
-    return max_num
-
+    # max_num = num_1
+    # if max_num < num_2:
+    #     max_num = num_2
+    # return max_num
+    # или так:
+    if num_1 > num_2:
+        return num_1
+    return num_2
 
 def maximum_of_three(num_3):
     return maximum_of_two(num_3, maximum_of_two(first_num, second_num))
