@@ -76,8 +76,9 @@ for i, value in enumerate(new_dog_list):
     if value < minimum:
         minimum = value
         min_index = i
+print(f'Индекс собаки {max_index + 1} с максимальным количеством очков {maximum}')
+print(f'Индекс собаки {min_index + 1} с минимальным количеством очков {minimum}')
 new_dog_list[min_index], new_dog_list[max_index] = new_dog_list[max_index], new_dog_list[min_index]
 print(new_dog_list)
 
-print(f'Индекс собаки {max_index + 1} с максимальным количеством очков {maximum}')
-print(f'Индекс собаки {min_index + 1} с минимальным количеством очков {minimum}')
+
