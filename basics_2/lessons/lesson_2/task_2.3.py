@@ -87,16 +87,36 @@ txt = []
 for i in range(3):
     user_txt = input(f"Введите {i+1} слово: ")
     txt.append(user_txt)
-print(txt)
+
 new_txt = []
 print_text = input("Слово из текста: ")
 while print_text != "end":
     new_txt.append(print_text)
     print_text = input("Слово из текста: ")
-print(new_txt)
+
 for value in txt:
     count = 0
     for val in new_txt:
         if value == val:
             count += 1
     print(value, ":", count)
+
+# Другой вариант:
+# words_list = []
+# counts = [0, 0, 0]
+#
+# for i in range(3):
+#     print("Введите", i + 1, "слово", end=' ')
+#     word = input()
+#     words_list.append(word)
+#
+# text = input("Слово из текста: ")
+# while text != "end":
+#     for index in range(3):
+#         if words_list[index] == text:
+#             counts[index] += 1
+#     text = input("Слово из текста: ")
+#
+# print("Подсчёт слов в тексте")
+# for i in range(3):
+#     print(words_list[i], ':', counts[i])
