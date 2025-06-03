@@ -58,3 +58,15 @@
 # ['бананы', 83.16], ['абрикосы', 162.0]]
 
 goods = [["яблоки", 50], ["апельсины", 190], ["груши", 100], ["нектарины", 200], ["бананы", 77]]
+fruit_name = input("Новый фрукт: ")
+price = int(input("Цена: "))
+new_fruit = [fruit_name, price]
+tax = 1.08
+
+goods.append(new_fruit)
+print("Новый ассортимент:", goods)
+
+for fruit_index in goods:
+    fruit_index[1] = round(fruit_index[1] * tax, 2)
+
+print(f"Новый ассортимент с увел. ценой: {goods}")
