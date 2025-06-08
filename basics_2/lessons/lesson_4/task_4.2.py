@@ -77,3 +77,16 @@ prices = [float(input("Цена на товар: ")) for _ in range(product_pric
 first_year = [get_year_prices(first_percent, i_price) for i_price in prices]
 second_year = [get_year_prices(second_percent, i_price) for i_price in first_year]
 print(f'Сумма цен за каждый год: {round(sum(prices), 2)}, {round(sum(first_year), 2)}, {round(sum(second_year), 2)}')
+
+# Вариант 2 от скилбокс:
+# prices = [float(input("Цена на товар: ")) for _ in range(5)]
+#
+# first_year = int(input("Повышение на первый год: "))
+# second_year = int(input("Повышение на второй год: "))
+#
+# all_prices = "Сумма цен за каждый год: "
+# for percent in 0, first_year, second_year:
+#     prices = [price * (1 + percent / 100) for price in prices]
+#     all_prices += " " + str(round(sum(prices), 2))
+#
+# print(all_prices)
