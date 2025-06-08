@@ -8,7 +8,6 @@
 # Правая граница: 10
 # Список кубов чисел в диапазоне от 5 до 10: [125, 216, 343, 512, 729, 1000]
 # Список квадратов чисел в диапазоне от 5 до 10: [25, 36, 49, 64, 81, 100]
-from basics_1.homeworks.hw_7.task_2 import second_num
 
 # def get_list_of_cubes(mult, i_cube):
 #     return i_cube ** mult
