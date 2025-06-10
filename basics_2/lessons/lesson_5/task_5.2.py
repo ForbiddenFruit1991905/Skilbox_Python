@@ -9,7 +9,7 @@
 #
 # while True:
 #     post_message = input('{name}, совершили покупку на нашем сайте. Номер Вашего заказа {order}.\n')
-#     if '{name}' or '{order}' not in post_message:
+#     if '{name}' in post_message and '{order}' in post_message:
 #         break
 #     print('Отсутствует конструкция {name} или {order}')
 #
