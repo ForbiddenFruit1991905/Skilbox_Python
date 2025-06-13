@@ -9,10 +9,49 @@
 # Доступное меню: утиное филе;фланк-стейк;банановый пирог;плов
 # На данный момент в меню есть: Утиное Филе, Фланк-Стейк, Банановый Пирог, Плов
 
-def menu_available(menu):
-    nice_view_text = ", ".join(menu.split(';')).title()
-    return nice_view_text
-menu_access = input('Доступное меню: ')
-result = menu_available(menu_access)
-print(f'На данный момент в меню есть: {result}')
+# def menu_available(menu):
+#     nice_view_text = ", ".join(menu.split(';')).title()
+#     return nice_view_text
+# menu_access = input('Доступное меню: ')
+# result = menu_available(menu_access)
+# print(f'На данный момент в меню есть: {result}')
 
+# Задача 2. Сжатие.
+# Из-за увеличения объёма данных понадобилось сжать их, но так, чтобы не потерять важную информацию.
+# Для этого было придумано специальное кодирование: s = 'aaaabbсaa' преобразуется в 'a4b2с1a2'. То есть
+# группы одинаковых символов исходной строки заменяются на эти символы и количество их повторений в строке.
+# Напишите программу, которая считывает строку, кодирует её, используя предложенный алгоритм, и выводит
+# закодированную последовательность на экран. Код должен учитывать регистр символов.
+# Пример:
+# Введите строку: aaAAbbсaaaA
+# Закодированная строка: a2A2b2с1a3A1
+
+def decode_text(text):
+    new_code = ''
+    count = 1
+
+    for i in range(1, len(text)):
+        if text[i] == text[i - 1]:
+            count += 1
+        else:
+            new_code += text[i - 1] + str(count)
+            count = 1
+    new_code += text[-1] + str(count)
+
+    return new_code
+
+text_code = input("Введите строку: ")
+result = decode_text(text_code)
+print(f'Закодированная строка: {result}')
+
+# Вариант от скилбокса:
+def text_coding(text):
+    count, result = 0, ""
+    for index, symbol in enumerate(text):
+        count += 1
+        if index == len(text) - 1 or symbol != text[index + 1]:
+            result += f'{symbol}{count}'
+            count = 0
+    return result
+user_text = input('Введите строку: ')
+print('Закодированная строка:', text_coding(user_text))
