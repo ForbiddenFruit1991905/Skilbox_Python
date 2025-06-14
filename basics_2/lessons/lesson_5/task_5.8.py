@@ -26,32 +26,68 @@
 # Введите строку: aaAAbbсaaaA
 # Закодированная строка: a2A2b2с1a3A1
 
-def decode_text(text):
-    new_code = ''
-    count = 1
+# def decode_text(text):
+#     new_code = ''
+#     count = 1
+#
+#     for i in range(1, len(text)):
+#         if text[i] == text[i - 1]:
+#             count += 1
+#         else:
+#             new_code += text[i - 1] + str(count)
+#             count = 1
+#     new_code += text[-1] + str(count)
+#
+#     return new_code
+#
+# text_code = input("Введите строку: ")
+# result = decode_text(text_code)
+# print(f'Закодированная строка: {result}')
+#
+# # Вариант от скилбокса:
+# def text_coding(text):
+#     count, result = 0, ""
+#     for index, symbol in enumerate(text):
+#         count += 1
+#         if index == len(text) - 1 or symbol != text[index + 1]:
+#             result += f'{symbol}{count}'
+#             count = 0
+#     return result
+# user_text = input('Введите строку: ')
+# print('Закодированная строка:', text_coding(user_text))
 
-    for i in range(1, len(text)):
-        if text[i] == text[i - 1]:
-            count += 1
-        else:
-            new_code += text[i - 1] + str(count)
-            count = 1
-    new_code += text[-1] + str(count)
+# Задача 3. Бегущая строка.
+# В одной из практических работ вы писали программу для табло, которая циклически сдвигает элементы списка
+# чисел вправо на K позиций. В этот раз вы работаете с двумя строками. Возможно, одна из строк немного сдвинута.
+# Нужно проверить, не равна ли первая строка второй.
+# Пользователь вводит две строки. Напишите программу, которая определяет, можно ли получить первую строку из второй
+# циклическим сдвигом.
+# По желанию: если строку получить можно, выведите значение сдвига.
+# Пример 1
+# Первая строка: abcd
+# Вторая строка: cdab
+# Первая строка получается из второй со сдвигом 2.
+# Пример 2
+# Первая строка: hello
+# Вторая строка: lohel
+# Первая строка получается из второй со сдвигом 3.
+# Пример 3
+# Первая строка: abcd
+# Вторая строка: cdba
+# Первую строку нельзя получить из второй с помощью циклического сдвига.
 
-    return new_code
-
-text_code = input("Введите строку: ")
-result = decode_text(text_code)
-print(f'Закодированная строка: {result}')
-
-# Вариант от скилбокса:
-def text_coding(text):
-    count, result = 0, ""
-    for index, symbol in enumerate(text):
+def shift(sentence_1, sentence_2):
+    count = 0
+    for _ in range(len(sentence_2)):
+        sentence_2 = list(sentence_2[-1]) + sentence_2[:-1]
         count += 1
-        if index == len(text) - 1 or symbol != text[index + 1]:
-            result += f'{symbol}{count}'
-            count = 0
-    return result
-user_text = input('Введите строку: ')
-print('Закодированная строка:', text_coding(user_text))
+        if sentence_1 == sentence_2:
+            return f'Первая строка получается из второй со сдвигом {count}'
+
+    return 'Первую строку нельзя получить из второй с помощью циклического сдвига'
+
+
+first_sentence = list(input('Первая строка: '))
+second_sentence = list(input('Вторая строка: '))
+result = shift(first_sentence, second_sentence)
+print(result)
