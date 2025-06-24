@@ -53,13 +53,3 @@ def my_phonebook():
 result = my_phonebook()
 for key, value in result.items():
     print(f'{key[0]}, {key[1]} -- {value}')
-
-
-
-
-# contact_info = input("Введите Фамилию Имя и телефон через пробел: ").split(' ')
-# key = tuple(contact_info[:2])
-# value = contact_info[len(contact_info) - 1]
-# print(key)
-# print(value)
-
