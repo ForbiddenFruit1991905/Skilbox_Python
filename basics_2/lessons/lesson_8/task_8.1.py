@@ -91,4 +91,8 @@ site = {
     }
 }
 result = get_value(key_to_find, site)
-print(f'Значение: {result}')
+
+if result:
+    print(f'Значение: {result}')
+else:
+    print('Такого ключа нет')
