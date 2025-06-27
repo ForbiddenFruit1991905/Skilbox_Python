@@ -65,9 +65,11 @@ from sys import flags
 
 def get_value(some_key, data):
     found = None
-    for key in data.keys():
-        if some_key == key:
-            return data[some_key]
+    # for key in data.keys():
+    #     if some_key == key:
+    #         return data[some_key]
+    if some_key in data.keys():
+        return data[some_key]
 
     for index_key, index_value in data.items():
         if isinstance(index_value, dict):
