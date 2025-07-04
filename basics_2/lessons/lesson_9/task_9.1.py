@@ -64,6 +64,8 @@ import os
 
 current_dir = os.getcwd()
 drive, _ = os.path.splitdrive(current_dir)
-root = drive + os.sep
-
+root = drive + os.sep * 2
 print(f"Корень диска: {root}")
+
+# Вариант от скиллбокса:
+print("Корень диска:", os.path.abspath(os.sep).split(os.sep)[0] + os.sep * 2)
