@@ -123,7 +123,6 @@ file_path = find_file(os.path.abspath
                       (os.path.join('..')),
                       'task_9.2.py')
 
-# print(file_path)
 if file_path is None:
     print("Файл не найден")
 else:
