@@ -77,7 +77,7 @@
 #
 #
 # def get_total():
-#     file_to_read = open('numbers.txt', 'r', encoding='utf-8')
+#   file_to_read = open('numbers.txt', 'r', encoding='utf-8')
 #     count = 0
 #     for index_number in file_to_read:
 #         count += int(index_number)
