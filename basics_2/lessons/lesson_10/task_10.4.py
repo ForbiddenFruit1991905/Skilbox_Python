@@ -59,28 +59,28 @@ from logging import exception
 # меньше трёх символов (не считая литерала \n), то вызывается ошибка, и
 # программа завершается.
 
-def check_length_of_names(file_to_read):
-    symbol_total = 0
-    try:
-        with open(file_to_read, 'r', encoding='utf-8') as read_file:
-            lines = read_file.readlines()
-            for line in lines:
-                length = len(line)
-                line = line.rstrip('\n')
-                if len(line) < 3:
-                    raise ValueError("Длина строки меньше 3 символов")
-                symbol_total += length
-
-    except FileNotFoundError:
-        print('Файл не найден.')
-    except ValueError as exc:
-        print(f'Ошибка: {exc}')
-    finally:
-        print('Найденная сумма символов:', symbol_total)
-
-
-file = 'people_list.txt'
-check_length_of_names(file)
+# def check_length_of_names(file_to_read):
+#     symbol_total = 0
+#     try:
+#         with open(file_to_read, 'r', encoding='utf-8') as read_file:
+#             lines = read_file.readlines()
+#             for line in lines:
+#                 length = len(line)
+#                 line = line.rstrip('\n')
+#                 if len(line) < 3:
+#                     raise ValueError("Длина строки меньше 3 символов")
+#                 symbol_total += length
+#
+#     except FileNotFoundError:
+#         print('Файл не найден.')
+#     except ValueError as exc:
+#         print(f'Ошибка: {exc}')
+#     finally:
+#         print('Найденная сумма символов:', symbol_total)
+#
+#
+# file = 'people_list.txt'
+# check_length_of_names(file)
 
 
 # Задача 2. Логирование
@@ -90,3 +90,30 @@ check_length_of_names(file)
 # Дан файл words.txt, в котором построчно записаны слова. Необходимо определить количество
 # слов, из которых можно получить палиндром (привет предыдущим модулям). Если в строке встречается
 # число, то программа выдаёт ошибку ValueError и записывает эту ошибку в файл errors.log
+
+def check_palindrome():
+    palindrome_words = []
+    try:
+        with open('words.txt', 'r', encoding='utf-8') as read_file, \
+            open('errors.txt', 'w', encoding='utf-8') as write_file:
+            lines = read_file.readlines()
+            for line in lines:
+                word = line.rstrip('\n')
+                try:
+                    if any(symbol.isdigit() for symbol in word):
+                        raise ValueError(f'Слово "{word}" содержит число.')
+
+                    if word == word[::-1]:
+                        palindrome_words.append(word)
+
+                except ValueError as exp:
+                    write_file.write(f'Ошибка: {exp}\n')
+
+    except FileNotFoundError:
+        print('Файл не найден.')
+
+    return palindrome_words
+
+
+result = check_palindrome()
+print("Палиндромы:", result)
