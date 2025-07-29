@@ -74,56 +74,92 @@
 # и при команде operate он делает то же, что и робот-охранник, плюс сообщает, что охрана ведётся под водой.
 # Напишите программу, которая реализует все необходимые классы роботов.
 
-class Robot:
+# class Robot:
+#
+#     def __init__(self, model):
+#         self.model = model
+#
+#     def __str__(self):
+#         return 'Модель робота {}.'.format(self.model)
+#
+#     def operate(self):
+#         print('Робот включен!')
+#
+#
+# class RobotVacuumCleaner(Robot):
+#     def __init__(self, model, garbage_bag=0):
+#         super().__init__(model)
+#         self.garbage_bag = garbage_bag
+#
+#     def operate(self):
+#         Robot.operate(self)
+#         self.garbage_bag += 1
+#         print("Пылесос работает. Заполняемость равна {}".format(self.garbage_bag))
+#
+#
+# class RobotSecure(Robot):
+#     def __init__(self, model, signalization):
+#         super().__init__(model)
+#         self.signalization = signalization
+#
+#     def operate(self):
+#         Robot.operate(self)
+#         print('Сигнализация подключена: {}.'.format(self.signalization))
+#
+#
+# class PoolCleaningRobot(RobotSecure):
+#     def __init__(self, model, signalization, depth):
+#         super().__init__(model, signalization)
+#         self.depth = depth
+#
+#     def operate(self):
+#         super().operate()
+#         print(f'Охрана ведётся под водой на глубине {self.depth} метров.')
+#
+#
+# rvc = RobotVacuumCleaner('hgjd', 5)
+# rs = RobotSecure('djkh', '1234khg')
+# pcr = PoolCleaningRobot('2huhh', '12h3lhg', 10)
+#
+# rvc.operate()
+# print(rvc)
+# rs.operate()
+# print(rs)
+# pcr.operate()
+# print(pcr)
 
-    def __init__(self, model):
-        self.model = model
+
+# Задача 3. Кастомные исключения.
+# Исключения в Python также являются классами, и все они берут свои истоки от самого главного
+# класса — Exception. И для создания своего собственного класса ошибки достаточно написать его
+# дочерний класс.
+# Причём содержимое объекта исключения чаще всего так и оставляют (просто pass), чтобы не сломать
+# автоматические обработчики исключений.
+# Напишите программу, которая считывает из файла numbers.txt пары чисел, делит первое число на второе
+# и выводит ответ на экран. Если первое число меньше второго, то программа выдаёт исключение DivisionError
+# (нельзя делить меньшее на большее).
+# Дополнительно, с помощью try except, можно обработать исключение на своё усмотрение.
+# raise MyOwnException('Это моя ошибка!')
+
+class DivisionError(Exception):
 
     def __str__(self):
-        return 'Модель робота {}.'.format(self.model)
+        return "Нельзя делить большее на меньшее!"
 
-    def operate(self):
-        print('Робот включен!')
+with open('numbers.txt', 'r', encoding='utf-8') as file_to_read:
+    for line in file_to_read:
+        first, second = line.rstrip().split()
+        try:
+            first_int = int(first)
+            second_int = int(second)
 
+            if second_int == 0:
+                raise ZeroDivisionError('Нельзя делить на ноль!')
 
-class RobotVacuumCleaner(Robot):
-    def __init__(self, model, garbage_bag=0):
-        super().__init__(model)
-        self.garbage_bag = garbage_bag
+            if first_int < second_int:
+                raise DivisionError
 
-    def operate(self):
-        Robot.operate(self)
-        self.garbage_bag += 1
-        print("Пылесос работает. Заполняемость равна {}".format(self.garbage_bag))
+            print(first_int / second_int)
 
-
-class RobotSecure(Robot):
-    def __init__(self, model, signalization):
-        super().__init__(model)
-        self.signalization = signalization
-
-    def operate(self):
-        Robot.operate(self)
-        print('Сигнализация подключена: {}.'.format(self.signalization))
-
-
-class PoolCleaningRobot(RobotSecure):
-    def __init__(self, model, signalization, depth):
-        super().__init__(model, signalization)
-        self.depth = depth
-
-    def operate(self):
-        super().operate()
-        print(f'Охрана ведётся под водой на глубине {self.depth} метров.')
-
-
-rvc = RobotVacuumCleaner('hgjd', 5)
-rs = RobotSecure('djkh', '1234khg')
-pcr = PoolCleaningRobot('2huhh', '12h3lhg', 10)
-
-rvc.operate()
-print(rvc)
-rs.operate()
-print(rs)
-pcr.operate()
-print(pcr)
+        except (DivisionError, ZeroDivisionError) as e:
+            print(f"Ошибка в строке '{line.strip()}': {e}")
