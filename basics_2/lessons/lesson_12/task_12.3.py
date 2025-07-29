@@ -144,7 +144,7 @@
 class DivisionError(Exception):
 
     def __str__(self):
-        return "Нельзя делить большее на меньшее!"
+        return "Нельзя делить меньшее на большее!"
 
 with open('numbers.txt', 'r', encoding='utf-8') as file_to_read:
     for line in file_to_read:
