@@ -79,13 +79,13 @@ def generate_file():
 def read_file_to_find_total():
     with open('numbers.txt', 'r', encoding='utf-8') as file_to_read:
         total = 0
-        for line in file_to_read:
-            numbers_str = line.rstrip().split()
+        for i_line in file_to_read:
+            numbers_str = i_line.rstrip().split()
             numbers = [int(num) for num in numbers_str]
             total += sum(numbers)
-        print(f"Общая сумма всех чисел в файле: {total}")
-
+        yield f"Общая сумма всех чисел в файле: {total}"
 
 
 generate_file()
-read_file_to_find_total()
+for line in read_file_to_find_total():
+    print(line)
