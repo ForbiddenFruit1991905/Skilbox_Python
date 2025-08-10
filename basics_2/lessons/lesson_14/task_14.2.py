@@ -6,6 +6,7 @@ def func_2(func, *args, **kwargs):
     result_1 = func(*args, **kwargs)
     result_2 = func(*args, **kwargs)
     return result_1 * result_2
+    # или так: return func(number) * func(number)
 
 # Реализуйте функцию высшего порядка func_2, которая будет возвращать перемножение двух результатов
 # переданной функции.
