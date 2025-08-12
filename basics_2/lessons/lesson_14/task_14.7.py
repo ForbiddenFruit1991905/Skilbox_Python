@@ -156,16 +156,29 @@
 # так как многие значения вычисляются повторно. Вам поручили создать декоратор, который кеширует
 # результаты вызова функции и позволяет избежать повторных вычислений для одних и тех же аргументов.
 # Для начала работы у вас есть такой код:
-from typing import Callable, Dict
+from typing import Callable, Any, Dict
 
-
-PLUGINS: Dict[str, Callable] = dict()
 
 def register_plugins(func: Callable) -> Callable:
-    PLUGINS[func.__name__] = func
-    return func
+    # cache_dict: Dict[Any, Any] = dict()
+    cache = {}
+    # def wrapper(*args, **kwargs) -> Any:
+    def wrapper(number: int) -> int:
+        # key = args + (frozenset(kwargs.items()),)
+        # if key in cache_dict:
+        #     return cache_dict[key]
+        #
+        # result = func(*args, **kwargs)
+        # cache_dict[key] = result
+        # return result
+        if number not in cache:
+            cache[number] = func(number)
+        return cache[number]
+
+    return wrapper
 
 
+@register_plugins
 def fibonacci(number):
     if number <= 1:
         return number
