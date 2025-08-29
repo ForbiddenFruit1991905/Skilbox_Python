@@ -17,3 +17,29 @@
 # Классы и методы/функции имеют прописанную документацию.
 # Есть аннотация типов для методов/функций и их аргументов (кроме args и kwargs). Если
 # функция/метод ничего не возвращает, то используется None.
+
+class File:
+
+    def __init__(self, file, is_exist):
+        self.file = file
+        self.is_exist = is_exist
+        self.file_to_open = None
+
+    def __enter__(self):
+        try:
+            self.file_to_open = open(self.file, self.is_exist, encoding='utf-8')
+        except IOError:
+            self.file_to_open = open(self.file, 'w')
+
+        return self.file_to_open
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.file_to_open:
+            self.file_to_open.close()
+        if exc_type and issubclass(exc_type, IOError):
+            return True
+
+
+with File('example.txt', 'w') as file_to_open:
+    file_to_open.write('Всем привет!')
+
