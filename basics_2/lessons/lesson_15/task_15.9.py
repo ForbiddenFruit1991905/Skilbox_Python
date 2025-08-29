@@ -40,6 +40,6 @@ class File:
             return True
 
 
-with File('example.txt', 'w') as file_to_open:
+with File('example_15.9.txt', 'w') as file_to_open:
     file_to_open.write('Всем привет!')
 
