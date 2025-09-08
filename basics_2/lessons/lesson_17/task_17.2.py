@@ -24,6 +24,7 @@ def counter(number: int):
             count_local = 0
             print('Вызов функции.')
             print(dir(__builtins__))
+            print(dir([]))  # атрибуты и методы списка
             result = None
             for _ in range(number):
                 result = func(*args, **kwargs)
