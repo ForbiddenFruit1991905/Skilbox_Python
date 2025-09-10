@@ -33,3 +33,62 @@ print(min_score)
 # убыванию и по возрастанию).
 # Реализуйте класс Person с соответствующей инициализацией, а также сеттерами и геттерами. Затем
 # создайте список из хотя бы трёх людей и отсортируйте их. Для сортировки используйте лямбда-функцию.
+
+class Person:
+
+
+    def __init__(self, name: str, age: int):
+        self._name = name
+        self._age = age
+
+
+    def __str__(self):
+        return f'Имя: {self._name}\nВозраст: {self._age}\n'
+
+
+    @property
+    def name(self):
+        return self._name
+
+
+    @property
+    def age(self):
+        return self.age
+
+
+    @name.setter
+    def name(self, some_value):
+        if not isinstance(some_value, str):
+            raise ValueError('Имя должно быть строкой')
+        self._name = some_value
+
+
+    @age.setter
+    def age(self, value):
+        if not isinstance(value, int):
+            raise ValueError('Возраст должен быть целочисленным')
+
+
+person_vika = Person('Vika', 34)
+person_dima = Person('Dima', 35)
+person_sonia = Person('Sonia', 2)
+person_polina = Person('Polina', 0)
+
+# print(person_vika)
+
+persons = [person_vika, person_dima, person_sonia, person_polina]
+dict_of_persons = {person._name: person for person in persons}
+for key in dict_of_persons:
+    print(dict_of_persons[key]._age)
+print(*dict_of_persons)
+
+for name, person in dict_of_persons.items():
+    print(f'Возраст {name}: {person._age}')
+
+sorted_dict_ascending = dict(sorted(dict_of_persons.items(), key=lambda x: x[1]._age))
+for name, person in sorted_dict_ascending.items():
+    print(f'{name}: {person._age}')
+print('*******************')
+sorted_dict_descending = dict(sorted(dict_of_persons.items(), key=lambda x: x[1]._age, reverse=True))
+for name, person in sorted_dict_descending.items():
+    print(f'{name}: {person._age}')
