@@ -63,3 +63,13 @@ def counter(count: int, data: str):
     return count
 
 print(reduce(counter, sentences, 0))
+
+# Вариант от скилбокса
+def check_was(a, b):
+    if isinstance(a, str):  # обработаем первый элемент отдельно
+        a = int(a.count('was'))
+    result = a + int(b.count('was'))
+    return result  # т.к. мы возвращаем int - то дальше 'a' всегда будет int-ом, а в 'b' будет новая строка
+
+
+print(reduce(check_was, sentences))
